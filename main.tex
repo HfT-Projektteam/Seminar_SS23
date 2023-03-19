@@ -13,16 +13,51 @@
 
 % CITATION
 \usepackage{acronym}
-\usepackage[style=ieee]{biblatex}
-\addbibresource{resources.bib}
 
-\usepackage[nottoc,numbib]{tocbibind}
-\renewcommand{\listoffigures}{\begingroup
-\tocsection
-\tocfile{\listfigurename}{lof}
-\endgroup}
+\usepackage[style=ieee, maxcitenames=2, mincitenames=1]{biblatex}
+\addbibresource{sources.bib}
 
+
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
+
+\title{Villeicht Quantensichere verschlüsselung\\
+{
+\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
+should not be used}
+}
+
+\author{
+\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+}
+
+\maketitle
+
+\begin{abstract}
+  Nothing Here!
+\end{abstract}
+
+\pagenumbering{Roman} 
+
+\listoffigures
+\addcontentsline{toc}{section}{Abbildungsverzeichniss}
+
+\section{Abkürzungsverzeichnis}
+\input{chapters/001-Abkuerzungen.tex}
+
+\section{Testteil}
+\input{chapters/01Test.tex}
 
 \section{Literaturverzeichnis}
 \printbibliography[heading=none]{}
