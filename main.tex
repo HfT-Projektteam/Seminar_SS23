@@ -21,45 +21,37 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
+\pagenumbering{Roman} 
 
-\title{Villeicht Quantensichere verschlüsselung\\
-{
-\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
-should not be used}
-}
+\title{Post Quanten Kryptographie\\
+\large \ \\ \large Warum wir neue Verschlüsselungsalgorithmen brauchen}
 
 \author{
-\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-\and
-\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+  \IEEEauthorblockN{Thomas Jakkel}
+  \IEEEauthorblockA{\textit{MatNr. 1001594} \\
+  01jath1bif@hft-stuttgart.de}
+
+  \and
+
+  \IEEEauthorblockN{Lukas Reinke}
+  \IEEEauthorblockA{\textit{MatNr. 1001213} \\
+  01relu1bif@hft-stuttgart.de}
 }
 
 \maketitle
 
-\begin{abstract}
-  Nothing Here!
-\end{abstract}
-
-\pagenumbering{Roman} 
+\input{./chapters/01_Abstract.tex}
 
 \listoffigures
 \addcontentsline{toc}{section}{Abbildungsverzeichniss}
 
-\section{Abkürzungsverzeichnis}
-\input{chapters/001-Abkuerzungen.tex}
+\section*{Abkürzungsverzeichnis}
+\input{./chapters/Abkuerzungen.tex}
 
-\section{Testteil}
-\input{chapters/01Test.tex}
+\section{Einleitung}
+\input{./chapters/02_Einleitung.tex}
 
-\section{Literaturverzeichnis}
+\section*{Literaturverzeichnis}
 \printbibliography[heading=none]{}
 
 \end{document}
