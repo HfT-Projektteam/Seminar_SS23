@@ -1,0 +1,9 @@
+- Einleitung
+- Einführung quantencomputing
+- Gefahr von Quantencomputern auf die asymmetrische Kryptographie
+    - asymmetrische Kryptographie
+    - Shor's Algorithmus
+- Neue Quantensichere Algorithmen
+    - **Wie heißt der nochmal?**
+- Fazit
+    - Beantwortung Leitfrage: Warum wir heute schon neue Verschlüsselungsalgorithmen brauchen
