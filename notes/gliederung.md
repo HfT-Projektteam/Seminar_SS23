@@ -4,6 +4,6 @@
     - asymmetrische Kryptographie
     - Shor's Algorithmus
 - Neue Quantensichere Algorithmen
-    - **Wie heißt der nochmal?**
+    - Lattice Kryptographie
 - Fazit
     - Beantwortung Leitfrage: Warum wir heute schon neue Verschlüsselungsalgorithmen brauchen
