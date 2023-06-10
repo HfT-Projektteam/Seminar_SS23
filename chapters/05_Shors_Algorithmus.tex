@@ -1,17 +1,141 @@
 % Einleitung Primfaktorzerlegung\\
-Die Faktorisierung großer Zahlen \cite[S189]{bernsteinPostquantumCryptography2017} ist ein fundamentales mathematisches Problem, bei dem eine gegebene Zahl in ihre Primfaktoren zerlegt wird. Dieses Problem ist von zentraler Bedeutung für die Kryptographie, da viele asymmetrische Verschlüsselungsverfahren, wie beispielsweise RSA, auf der Schwierigkeit der Faktorisierung großer Zahlen beruhen.
+Die Faktorisierung großer Zahlen \cite[S189]{bernsteinPostquantumCryptography2017} ist ein fundamentales mathematisches Problem, 
+bei dem eine gegebene Zahl in ihre Primfaktoren zerlegt wird.
+Dieses Problem ist von zentraler Bedeutung für die Kryptographie, da viele asymmetrische Verschlüsselungsverfahren, wie beispielsweise RSA, 
+auf der Schwierigkeit der Faktorisierung großer Zahlen beruhen.
 
-Das Problem der Primfaktorzerlegung besteht darin, eine öffentliche Zahl N in zwei oder mehr geheime Primzahlen p und q zu zerlegen: N = pq. Für kleine Zahlen kann die Faktorisierung durch Ausprobieren möglicher Primfaktoren relativ einfach sein. Allerdings wird die Faktorisierung bei großen Zahlen exponentiell schwieriger, da es keine effizienten klassischen Algorithmen gibt, welche dies in Polynomialzeit bewältigen können.
+Das Problem der Primfaktorzerlegung besteht darin, eine öffentliche Zahl $N$ in zwei oder mehr geheime Primzahlen $p$ und $q$ zu zerlegen, sodass: $N = p*q$. 
+Für kleine Zahlen kann die Faktorisierung durch Ausprobieren möglicher Primfaktoren relativ einfach sein. 
+Allerdings wird die Faktorisierung bei großen Zahlen exponentiell schwieriger, 
+da es keine effizienten klassischen Algorithmen gibt, welche dies in Polynomialzeit bewältigen können.
 
-Die Sicherheit vieler asymmetrischer Verschlüsselungsverfahren, wie beispielsweise das RSA-Verfahren, beruht auf der Schwierigkeit der Faktorisierung großer Zahlen. Wenn ein Angreifer in der Lage wäre, die Primfaktoren einer Zahl zu finden, könnte er den geheimen Schlüssel einer Verschlüsselungsmethode berechnen und die Sicherheit des Systems kompromittieren.\\
+Die Sicherheit vieler asymmetrischer Verschlüsselungsverfahren, 
+wie beispielsweise das RSA-Verfahren, beruht auf der Schwierigkeit der Faktorisierung großer Zahlen. 
+Wenn ein Angreifer in der Lage wäre, die Primfaktoren einer Zahl zu finden, 
+könnte er den geheimen Schlüssel einer Verschlüsselungsmethode berechnen und die Sicherheit des Systems kompromittieren.\\
 
 % Shors Algorithmus
-Shors Algorithmus \cite{shorAlgorithmsQuantumComputation1994} gilt als einer der bedeutendsten Quantenalgorithmen, der die Faktorisierung großer Zahlen in Polynomialzeit ermöglicht. Auch wenn dieser Algorithmus einen Quantencomputer mit vielen, stabilen Qubits voraussetzt, stellt diese revolutionäre Entdeckung bereits heute eine enorme Bedrohung für die moderne Kryptographie dar.
-Zum einen wird effektiv an CQ geforscht, die Anzahl stabiler Qubits in QC steigen. Wenn der Quantencomputer seinen Durchbruch in unserer Gsellschaft erreicht hat, müssen wir darauf vorbereitet sein und uns bereits heute mit den Konsequenzen auseinander setzen. Zum anderen werden verschlüsselten Daten bereits heute gespeichert um sie in der Zukunft entschlüsseln zu können und im Nachinein an wichtige, vertrauliche Informationen zu gelangen. In der Kryptographie spricht man von dem Prinzip: "Safe now, decrypt later".\\
+Shors Algorithmus \cite{shorAlgorithmsQuantumComputation1994} gilt als einer der bedeutendsten Quantenalgorithmen, 
+der die Faktorisierung großer Zahlen in Polynomialzeit ermöglicht. 
+Auch wenn dieser Algorithmus einen Quantencomputer mit vielen, stabilen Qubits voraussetzt, 
+stellt diese revolutionäre Entdeckung bereits heute eine enorme Bedrohung für die moderne Kryptographie dar.
+Zum einen wird effektiv an \ac{qc} geforscht, die Anzahl stabiler Qubits in \ac{qc} steigen. 
+Wenn der Quantencomputer seinen Durchbruch in unserer Gsellschaft erreicht hat, müssen wir darauf vorbereitet sein und uns bereits heute mit den Konsequenzen auseinander setzen. 
+Zum anderen werden verschlüsselten Daten bereits heute gespeichert um sie in der Zukunft entschlüsseln zu können und 
+im Nachinein an wichtige, vertrauliche Informationen zu gelangen. In der Kryptographie spricht man von dem Prinzip: \glqq Safe now, decrypt later\grqq.\\
 
-Shors Algorithmus bietet eine effiziente Lösung für die Faktorisierung großer Zahlen auf einem Quantencomputer. Dieser Quantenalgorithmus...
+Im folgenden \cite{kakLecture12PublicKey} werden wir an einem vereinfachten Beispiel näher aufzeigen, 
+wie Shors Algorithmus eine effiziente Lösung für die Faktorisierung großer Zahlen auf einem Quantencomputer bietet.
+Zunächst betrachten wir die öffentliche Zahl $N$, welche in ihre Primfaktoren $p$ und $q$ zerlegt werden soll. 
+Für das vereinfachte Beispiel wählen wir $N = 77$. Also: $$N = p*q \textrm{ mit } N= 77$$
+\textit{Beachte das $N$ in Realität eine riesige Zahl ist. Das vereinfachte Beispiel soll ledeglich den Prozess von Shors Algorithmus aufzeigen}
 
-\subsection{Faktorisierung großer Zahlen}
+Nun stellen wir eine zweite Gleichung 
+$${g^r = mN+1}$$ 
+auf, welche behauptet, dass man immer einen Exponenten $r$ finden kann, sodass ein Vielfaches einer zufälligen Zahl $g < N$ gleich einem vielfachen $m$ der Zahl $N+1$ ist.
+Wir wählen zufällig die Zahl $g = 8$ und erhalten aus \ref{fig:Zufallszahl $g^x$ mit Rest} $r = 10$
+
+\begin{figure}[h]
+    \begin{center}
+        \begin{tabular}{|c|c|c|} \hline
+            $g^x$       &   $g^x/77$    &   Rest    \\\hline
+            $g^0$       &   0           &   1       \\\hline
+            $g^1$       &   0           &   8       \\\hline
+            $g^2$       &   0           &   64      \\\hline
+            $g^3$       &   6           &   50      \\\hline
+            $g^4$       &   53          &   15      \\\hline
+            $g^5$       &   425         &   43      \\\hline
+            $g^6$       &   3404        &   36      \\\hline
+            $g^7$       &   27235       &   57      \\\hline
+            $g^8$       &   217885      &   71      \\\hline
+            $g^9$       &   1733087     &   29      \\\hline
+            $g^{10}$    &   13944699    &   1       \\\hline
+        \end{tabular}\\
+    \end{center}
+    \caption{Zufallszahl $g^x$ mit Rest}
+    \label{fig:Zufallszahl $g^x$ mit Rest}
+\end{figure}
+
+Wie extrahiert man aus der Funktion $g^{10} = mN + 1$ die Primfaktoren $p, q$? Hierfür schreiben wir unsere ursprüngliche Gleichung um und erhalten:
+
+\begin{align*}
+                        &   g^r = mN+1      \\
+    \Leftrightarrow\;\; &   g^r - 1 = mN    \\
+    \Leftrightarrow\;\; &   g^r - 1 = mN    \\
+    \Leftrightarrow\;\; &   (g^{r/2} + 1)(g^{r/2} - 1) = mN
+\end{align*}
+
+Mit $r = 10$ erhalten wir:
+
+\begin{align*}
+    (g^{r/2} + 1) &= (8^5 + 1) &= 32.769 \\
+    (g^{r/2} - 1) &= (8^5 - 1) &= 32.767
+\end{align*}
+
+Damit haben wir aus einer geschätzten Zahl $g = 8$ zwei Zahlen gefunden, welche vermutlich Faktoren mit $N$ teilen. 
+Um diese Faktoren zu finden, wenden wir den euklidischen Algorithmus an, um den \ac*{ggT} zu finden:
+
+\begin{align*}
+    & 32.769 / 77 &=\;&  425 R 44    \\
+    & 77 / 44     &=\;&  1 R 33      \\
+    & 44 / 33     &=\;&  1 R 11      \\
+    & 33 / 11     &=\;&  3 R 0       \\
+    \Rightarrow\;\; & ggT(32.769, 77) = 11
+\end{align*}
+
+Wir erhalten somit als ersten Faktor $p = 11$. 
+Für den zweiten Faktor kann der selbe Prozess nochmals mit der zweiten Zahl berechnet werden, oder wir erhalten durch $q = N/p \Leftrightarrow q = 7$. 
+Damit haben wir erfolgreich die Zahl $N = 77$ in ihre Primfaktoren $p=11$ und $q=7$ zerteilt.\\
+
+
+Nachfolgend fassen wir nochmal die Schritte zusammen, wie man eine eine öffentliche Zahl $N$, ein Produkt aus zwei Primzahlen faktorisiert.
+
+\begin{enumerate}
+    \item Schätze eine Zahl $g < N$
+    \item Finde einen Exponenten $r$ sodass\\$g^r = mN + 1$
+    \item Berechne $(g^{r/2} + 1)$ und $(g^{r/2} - 1)$
+    \item Nutze den euklidischen Algorithmus um den \ac{ggT} zu finden
+\end{enumerate}
+\\
+
+Um diesen Algorithmus auszuführen bräuchte es noch keinen \ac{qc}, jedoch wäre diese Methode auf einem klassischen Computer nicht schneller, als herkömmliche Methoden. 
+Der Kernprozess, welcher ein \ac{qc} beschleunigt ist Schritt 2. Um dies zu verstehen, betrachten wir \ref{fig:Zufallszahl $g^x$ mit Rest} nochmal genauer. 
+Würde man die Tabelle fortführen, würde sich der Restanteil der Zahlen stets wiederholen. In unserem obrigen Beispiel mit der Periode $10$, 
+wie sich aus $g^0 Rest 1$ und $g^{10} Rest 1$ erkennen lässt. Dies gilt ebenfalls für die anderen Zahlen, beispielsweise würde $8^{13} Rest 50$ haben.
+Dies bedeutet, dass sich Schritt 2 beschleunigen lässt indem man die Periode findet, mit der sich der Restanteil wiederholt. 
+An dieser Stelle setzt der Quantenpart ein.\\
+
+% Quanten Part
+Für die Quantenberechnung \cite[S.1-2]{amicoExperimentalStudyShor2019} werden zwei Quantenregister benötigt. Ein Periodenregister $n_p$, 
+um den Wert der Periode zu speichern und ein Ergebnisregister $n_q$ um das Ergebnis der Berechnung zu speichern. 
+Die Größe der beiden Register hängt von der Zahl $N$ welcher faktorisiert werden soll. 
+Das Periodenregister benötigt eine Anzahl von Qubits $n_p$, von etwa $\log_2(N^2) \le log_2(2N^2)$. 
+Das Ergebnisregister muss ledeglich groß genug sein um die Zahl $N-1$ zu speichern, was $n_q = \log_2(N)$ Qubits benötigt.
+Zu Beginn wird das Periodenregister fortlaufend von $1$ initialisiert: $\ket{x} = \ket{0} + \ket{1} + ... + \ket{10^{1234}}$
+Diese Zahlen stellen den Exponenten $r$ dar. Das Ergebnisregister wird vorerst mit $0$ initialisiert $\ket{x} = \ket{0} + \ket{0} + ... + \ket{0}$.
+Nun nehmen wir unsere geschätzte Zahl $g < N$ und potenzieren diese mit der Menge des Periodenregisters $n_p$, teilen diese durch die Zahl $N$ 
+und speichern den Rest $R$ im Ergebnisregister $n_q$.
+
+$$\ket{\frac{g^0}{N}},\;\ket{\frac{g^1}{N}},\;\ket{\frac{g^2}{N}},\;...$$
+$$\ket{R_0},\; \ket{R_1},\; \ket{R_2},&\;...$$
+
+Im jetzigen Stadium haben wir das unveränderte Periodenregister $n_p$, welches die Zahlen $r$ der Folge $1, 2, 3...$ beinhaltet 
+und das Ergebnisregister $n_q$ in welchem nun der Restanteil $R$ von $\frac{g^r}{N}$ liegt.
+
+$$\ket{0}\ket{R_0} + \;\ket{1}\ket{R_1} + \;\ket{2}\ket{R_2} + \;...$$
 
 %
-Die teuerste Operation \cite*[S.]{gidneyHowFactor20482021}
+Die teuerste Operation \cite*[S.]{gidneyHowFactor20482021} 
+
+
+
+
+%Notes
+Die Werte sind in der Superposition abgespeichert. Die Herausforderung besteht darin, den richtigen Wert auszulesen. Man kann nämlich nur einen Wert zur selben Zeit auslesen.
+--> Superpositon von allen möglichen Lösung extrahieren in eine Superposition mit der Lösung die man braucht,
+
+Q-Fourier Transformation:
+Superposition von periodischen Signalen -> QFT -> Superposition mit jeweiligen Frequenz des Signals.
+
+"Die Quanten Fourier Transformation erlaubt es die Frequenz einer periodischen Superposition zu ermitteln."
+
