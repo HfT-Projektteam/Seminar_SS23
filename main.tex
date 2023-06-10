@@ -14,6 +14,10 @@
 % CITATION
 \usepackage{acronym}
 
+% MATH
+
+\usepackage{physics}
+
 \usepackage[style=ieee, maxcitenames=2, mincitenames=1]{biblatex}
 \addbibresource{sources.bib}
 
@@ -45,17 +49,26 @@
 \listoffigures
 \addcontentsline{toc}{section}{Abbildungsverzeichniss}
 
-\section*{Abkürzungsverzeichnis}
-\input{./chapters/Abkuerzungen.tex}
+%%\section*{Abkürzungsverzeichnis}
+%%\input{./chapters/Abkuerzungen.tex}
 
 \section{Einleitung}
 \input{./chapters/02_Einleitung.tex}
 
+\section{Einführung in das Quanten Computing}
+\input{chapters/03_QC-introuduction.tex}
+
+\section{RSA}
+\input{chapters/04_RSA.tex}
+
 \section{Shors-Algorithmus}
 \input{./chapters/05_Shors_Algorithmus.tex}
 
-\section{ChatGPT}
-\input{./notes/chatGPT.tex}
+\section{Leitfrage: Warum wir neue Verschlüsselungsalgorithmen brauchen}
+\input{chapters/06_Fazit.tex}
+
+%% \section{ChatGPT}
+%% \input{./notes/chatGPT.tex}
 
 \section*{Literaturverzeichnis}
 \printbibliography[heading=none]{}
