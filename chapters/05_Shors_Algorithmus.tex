@@ -24,7 +24,7 @@ Wenn der Quantencomputer seinen Durchbruch in unserer Gsellschaft erreicht hat, 
 Zum anderen werden verschlüsselten Daten bereits heute gespeichert um sie in der Zukunft entschlüsseln zu können und 
 im Nachinein an wichtige, vertrauliche Informationen zu gelangen. In der Kryptographie spricht man von dem Prinzip: \glqq Safe now, decrypt later\grqq.\\
 
-Im folgenden \cite{kakLecture12PublicKey} werden wir an einem vereinfachten Beispiel näher aufzeigen, 
+Im folgenden \cite{kakLecture12PublicKey}\cite[S. 4-5]{gidneyHowFactor20482021} werden wir an einem vereinfachten Beispiel näher aufzeigen, 
 wie Shors Algorithmus eine effiziente Lösung für die Faktorisierung großer Zahlen auf einem Quantencomputer bietet.
 Zunächst betrachten wir die öffentliche Zahl $N$, welche in ihre Primfaktoren $p$ und $q$ zerlegt werden soll. 
 Für das vereinfachte Beispiel wählen wir $N = 77$. Also: $$N = p*q \textrm{ mit } N= 77$$
@@ -94,9 +94,8 @@ Nachfolgend fassen wir nochmal die Schritte zusammen, wie man eine eine öffentl
     \item Schätze eine Zahl $g < N$
     \item Finde einen Exponenten $r$ sodass\\$g^r = mN + 1$
     \item Berechne $(g^{r/2} + 1)$ und $(g^{r/2} - 1)$
-    \item Nutze den euklidischen Algorithmus um den \ac{ggT} zu finden
+    \item Nutze den euklidischen Algorithmus um den \ac{ggT} zu finden\\
 \end{enumerate}
-\\
 
 Um diesen Algorithmus auszuführen bräuchte es noch keinen \ac{qc}, jedoch wäre diese Methode auf einem klassischen Computer nicht schneller, als herkömmliche Methoden. 
 Der Kernprozess, welcher ein \ac{qc} beschleunigt ist Schritt 2. Um dies zu verstehen, betrachten wir \ref{fig:Zufallszahl $g^x$ mit Rest} nochmal genauer. 
@@ -108,34 +107,38 @@ An dieser Stelle setzt der Quantenpart ein.\\
 % Quanten Part
 Für die Quantenberechnung \cite[S.1-2]{amicoExperimentalStudyShor2019} werden zwei Quantenregister benötigt. Ein Periodenregister $n_p$, 
 um den Wert der Periode zu speichern und ein Ergebnisregister $n_q$ um das Ergebnis der Berechnung zu speichern. 
-Die Größe der beiden Register hängt von der Zahl $N$ welcher faktorisiert werden soll. 
-Das Periodenregister benötigt eine Anzahl von Qubits $n_p$, von etwa $\log_2(N^2) \le log_2(2N^2)$. 
+Die Größe der beiden Register hängt von der Zahl $N$ ab, welche faktorisiert werden soll. 
+Das Periodenregister benötigt eine Anzahl von Qubits $n_p$, von etwa $\log_2(N^2) \le n_p \le log_2(2N^2)$. 
 Das Ergebnisregister muss ledeglich groß genug sein um die Zahl $N-1$ zu speichern, was $n_q = \log_2(N)$ Qubits benötigt.
-Zu Beginn wird das Periodenregister fortlaufend von $1$ initialisiert: $\ket{x} = \ket{0} + \ket{1} + ... + \ket{10^{1234}}$
-Diese Zahlen stellen den Exponenten $r$ dar. Das Ergebnisregister wird vorerst mit $0$ initialisiert $\ket{x} = \ket{0} + \ket{0} + ... + \ket{0}$.
+Zu Beginn wird das Periodenregister fortlaufend von $1$ initialisiert: 
+$$\ket{n_p} = \ket{0} + \ket{1} + \ket{2} + ... + \ket{10^{1234}}$$
+Diese Zahlen stellen den Exponenten $r$ dar. Das Ergebnisregister wird vorerst mit $0$ initialisiert: 
+$$\ket{n_q} = \ket{0} + \ket{0} + \ket{0} + ... + \ket{0}$$
 Nun nehmen wir unsere geschätzte Zahl $g < N$ und potenzieren diese mit der Menge des Periodenregisters $n_p$, teilen diese durch die Zahl $N$ 
 und speichern den Rest $R$ im Ergebnisregister $n_q$.
 
 $$\ket{\frac{g^0}{N}},\;\ket{\frac{g^1}{N}},\;\ket{\frac{g^2}{N}},\;...$$
-$$\ket{R_0},\; \ket{R_1},\; \ket{R_2},&\;...$$
+$$\ket{R_0},\; \ket{R_1},\; \ket{R_2},\;...$$
 
 Im jetzigen Stadium haben wir das unveränderte Periodenregister $n_p$, welches die Zahlen $r$ der Folge $1, 2, 3...$ beinhaltet 
 und das Ergebnisregister $n_q$ in welchem nun der Restanteil $R$ von $\frac{g^r}{N}$ liegt.
 
 $$\ket{0}\ket{R_0} + \;\ket{1}\ket{R_1} + \;\ket{2}\ket{R_2} + \;...$$
 
-%
-Die teuerste Operation \cite*[S.]{gidneyHowFactor20482021} 
+Die Herausforderung besteht nun darin aus der Superposition von allen möglichen Lösungen, die eine richtige zu extrahieren. 
+Der Trick ligt darin sich nur den Rest anzuschauen. Betrachten wir nochmal unser obriges Beispiel. Sobald man eine mögliche Lösung misst, 
+z.B. aus \ref{fig:Zufallszahl $g^x$ mit Rest} $R = 15$. wird dieser Rest periodisch erneut auftauchen, nämlich
 
+$$\ket{4}\ket{R_{15}} + \;\ket{14}\ket{R_{15}} + \;\ket{24}\ket{R_{15}} + \;...$$
 
+Nachdem man also einen Restanteil misst, erhält man eine Menge von Superposition, welche den selben Restanteil besitzen. 
+Und die Exponenten sind genau um die Periode $r$ voneinander getrennt.
 
+$$\ket{i}\ket{R} + \;\ket{i+r}\ket{R} + \;\ket{i+2r}\ket{R} + \;...$$
 
-%Notes
-Die Werte sind in der Superposition abgespeichert. Die Herausforderung besteht darin, den richtigen Wert auszulesen. Man kann nämlich nur einen Wert zur selben Zeit auslesen.
---> Superpositon von allen möglichen Lösung extrahieren in eine Superposition mit der Lösung die man braucht,
+Da der Restanteil hier immer der Gleiche ist, kann dieser vernachläsigt werden und man erhält somit eine periodische Superposition.
 
-Q-Fourier Transformation:
-Superposition von periodischen Signalen -> QFT -> Superposition mit jeweiligen Frequenz des Signals.
+$$\ket{i} + \;\ket{i+r} + \;\ket{i+2r} + \;...$$
 
-"Die Quanten Fourier Transformation erlaubt es die Frequenz einer periodischen Superposition zu ermitteln."
-
+Im letzten Schritt kann die \ac{qft} angewendet werden, welche es erlaubt die Frequenz einer periodischen Superposition zu ermitteln. \cite[S. 2]{amicoExperimentalStudyShor2019}
+Wenden wir also auf die obrige periodische Superposition die \ac{qft} an, können wir aus dem Ergebnis $r$ auslesen.\\
