@@ -9,7 +9,7 @@ Um die Funktion eines \ac{qc} zu erläutern muss erst ein kurzer Blick auf einig
 \subsubsection{Superpositionen}
 Eine Superposition ist das Fundamentale quantenphysische Phänomen das einem \ac{qc} zugrunde Liegt.
 Es wird meistens mithilfe des Gedankenexperiments von \cite[\$5]{schrodinger_gegenwartige_1935} \textit{Schrödingers Katze} veranschaulicht: In einer Box befindet sich eine Katze und ein Gefäß mit Gift das zerstört wird und die Katze tötet, wenn ein radioaktiver Zerfall gemessen wird. Außerhalb der Box lässt sich nicht feststellen, ob der Mechanismus der das Gift freisetzt aktiviert wurde. Sie befindet sich, Quantenmechanisch gesehen, in einem Zustand in dem sie sowohl tot als auch lebendig ist. In dem Moment, in dem die Box geöffnet wird, kann festgestellt werden welcher der beiden Zustände eingetroffen ist.\\
-Auf ein Quantenteilchen übertragen heißt das: Es kann sich in einem undefinierten Zustand befinden, der \textbf{Superposition} aus allen möglichen Zuständen. Erst wenn \textit{nachgeschaut}, also der Zustand gemessen wird, kollabiert die Superposition in einen der möglichen Zustände. Eine Superposition kann durch die Wahrscheinlichkeit, mit der jeder der Zustände eintreten kann, beschrieben werden. Ein Elektron mit den Zuständen Spin up ($75\%$) und Spin down ($25\%$) kollabiert also, wenn der Spin gemessen wird zu $3/4$ der Fälle als Spin up und zu $1/4$ als Spin down.
+Auf ein \ac{qt} übertragen heißt das: Es kann sich in einem undefinierten Zustand befinden, der \textbf{Superposition} aus allen möglichen Zuständen. Erst wenn \textit{nachgeschaut}, also der Zustand gemessen wird, kollabiert die Superposition in einen der möglichen Zustände. Eine Superposition kann durch die Wahrscheinlichkeit, mit der jeder der Zustände eintreten kann, beschrieben werden. Ein Elektron mit den Zuständen Spin up ($75\%$) und Spin down ($25\%$) kollabiert also, wenn der Spin gemessen wird zu $3/4$ der Fälle als Spin up und zu $1/4$ als Spin down.
 Mathematisch kann eine Superposition $\psi$ als Linearkombination ihrer Zustände betrachtet werden. 
 \begin{equation}
     \ket{\psi } = \alpha \ket{1} + \beta \ket{0} \\
@@ -24,16 +24,32 @@ Diese Linearkombination kann auch grafisch, als Vektor auf einer Kugel dargestel
 \end{figure}
 
 \subsubsection{Quantenverschränkung}
-Das zweite quantenphysikalische Phänomen auf dem ein Quantencomputer basiert ist die \textbf{Quantenverschränkung}. 
+Das zweite quantenphysikalische Phänomen auf dem ein Quantencomputer basiert ist die \textbf{Quantenverschränkung}. Der Zustand verschränkter \ac{qt} is voneinander abhängig. Verändert sich der Zustand eines einzelnen \ac{qt}s Verändert sich der Zustand aller mit ihm verschränken \ac{qt}. Das bedeutet auch: Wird der Zustand eines \ac{qt}s gemessen und seine die Superposition kollabiert, so kollabiert die Superposition aller verschränken \ac{qt} \cite{miller_principles_nodate}.\\
 
 \subsection{Implementierung eines Quantencomputers}
 
+Mit den oben erläuterten Phänomenen sind wir nun in der Lage einen Quantencomputer zu konstruieren. Ein klassischer Computer kann in einem Bit immer nur eine Information auf ein mal darstellen. In zwei bit kann somit eine der Kombinationen aus dem Folgenden Set darstellen.
 
-% Notes: 
-% Herausforderung, warum ein QC allein noch nicht den Prozess beschleunigt. Die Herausforderung aus der Superposition aller möglichen Lösungen, die eine richtige zu erhalten.
+\begin{equation}
+    Klassischer Computer: \{00, 01, 10, 11\}
+\end{equation}
 
-% ChatGPT
-Ein \ac{qr} ist ein grundlegender Bestandteil eines Quantencomputers und repräsentiert den Speicher für Quanteninformationen. Es ist vergleichbar mit einem klassischen Register in einem herkömmlichen Computer, jedoch basiert es auf den Prinzipien der Quantenmechanik.
+Ein \ac{qc} hingegen kann mithilfe verschränkter \ac{qt} das Set aus allen Möglichen Informationen repräsentieren.
+
+\begin{equation}
+    Quantencomputer: \ket{\psi_0 \psi_1} 
+\end{equation}
+
+Was alle Elemente aus dem folgenden Set repräsentiert.
+
+\begin{equation}
+    \{ \ket{00}, \ket{01}, \ket{10}, \ket{11} \}
+\end{equation} \cite[142]{steane_quantum_1998}
+
+Die Herausforderung ist nun die richtige Lösung aus der Menge aller möglicher Lösungen heraus zu extrahieren. Messen wir den Zustand eines \ac{qt} so kollabieren die verschränken Superpositionen zu einer der möglichen Informationen, alle Informationen können nicht auf ein mal ausgelesen werden. Auch ist es nicht möglich ein mal gemessene \ac{qt}s wieder in eine Superposition zu versetzen. Wie ist es nun möglich mit einem \ac{qc} Berechnungen anzustellen?
+
+\subsubsection{Quantenregister}
+Ein \ac{qr} ist ein grundlegender Bestandteil eines \ac{qc} und repräsentiert den Speicher für Quanteninformationen. Es ist vergleichbar mit einem klassischen Register in einem herkömmlichen Computer.
 
 Ein \ac{qr} besteht aus einer Anordnung von Qubits und dient als Container, um diese zu speichern und sie miteinander zu manipulieren. Die Anzahl der Qubits in einem \ac{qr} bestimmt die Größe und Komplexität der Berechnungen, die ein \ac{qc} durchführen kann. Je größer das \ac{qr} ist, desto mehr Qubits stehen zur Verfügung, um komplexe Berechnungen durchzuführen.
 
@@ -45,3 +61,5 @@ Das \ac{qr} spielt eine zentrale Rolle in Quantenalgorithmen, da es die Plattfor
 %[1] Nielsen, M. A., & Chuang, I. L. (2010). Quantum Computation and Quantum Information. Cambridge University %Press.
 %[2] Mermin, N. D. (2007). Quantum Computer Science: An Introduction. Cambridge University Press.
 %[3] Kaye, P., Laflamme, R., & Mosca, M. (2007). An Introduction to Quantum Computing. Oxford University Press.
+
+\subsection{Fehlerkorrektur}
