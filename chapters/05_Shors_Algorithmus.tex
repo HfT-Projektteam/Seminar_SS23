@@ -1,5 +1,5 @@
 % Einleitung Primfaktorzerlegung\\
-Die Faktorisierung großer Zahlen \cite[S189]{bernsteinPostquantumCryptography2017} ist ein fundamentales mathematisches Problem, 
+Die Faktorisierung großer Zahlen \cite[S189]{bernstein_post-quantum_2017} ist ein fundamentales mathematisches Problem, 
 bei dem eine gegebene Zahl in ihre Primfaktoren zerlegt wird.
 Dieses Problem ist von zentraler Bedeutung für die Kryptographie, da viele asymmetrische Verschlüsselungsverfahren, wie beispielsweise RSA, 
 auf der Schwierigkeit der Faktorisierung großer Zahlen beruhen.
@@ -15,7 +15,7 @@ Wenn ein Angreifer in der Lage wäre, die Primfaktoren einer Zahl zu finden,
 könnte er den geheimen Schlüssel einer Verschlüsselungsmethode berechnen und die Sicherheit des Systems kompromittieren.\\
 
 % Shors Algorithmus
-Shors Algorithmus \cite{shorAlgorithmsQuantumComputation1994} gilt als einer der bedeutendsten Quantenalgorithmen, 
+Shors Algorithmus \cite{shor_algorithms_1994} gilt als einer der bedeutendsten Quantenalgorithmen, 
 der die Faktorisierung großer Zahlen in Polynomialzeit ermöglicht. 
 Auch wenn dieser Algorithmus einen \ac{qc} mit vielen, stabilen Qubits voraussetzt, 
 stellt diese revolutionäre Entdeckung bereits heute eine enorme Bedrohung für die moderne Kryptographie dar.
@@ -24,7 +24,7 @@ Wenn der \ac{qc} seinen Durchbruch in unserer Gsellschaft erreicht hat, müssen 
 Zum anderen werden verschlüsselten Daten bereits heute gespeichert um sie in der Zukunft entschlüsseln zu können und 
 im Nachinein an wichtige, vertrauliche Informationen zu gelangen. In der Kryptographie spricht man von dem Prinzip: \glqq Safe now, decrypt later\grqq.\\
 
-Im folgenden \cite{kakLecture12PublicKey}\cite[S. 4-5]{gidneyHowFactor20482021} werden wir an einem vereinfachten Beispiel näher aufzeigen, 
+Im folgenden \cite{kak_lecture_nodate}\cite[S. 4-5]{gidney_how_2021} werden wir an einem vereinfachten Beispiel näher aufzeigen, 
 wie Shors Algorithmus eine effiziente Lösung für die Faktorisierung großer Zahlen auf einem \ac{qc} bietet.
 Zunächst betrachten wir die öffentliche Zahl $N$, welche in ihre Primfaktoren $p$ und $q$ zerlegt werden soll. 
 Für das vereinfachte Beispiel wählen wir $N = 77$. Also: $$N = p*q \textrm{ mit } N= 77$$
@@ -105,7 +105,7 @@ Dies bedeutet, dass sich Schritt 2 beschleunigen lässt indem man die Periode fi
 An dieser Stelle setzt der Quantenpart ein.\\
 
 % Quanten Part
-Für die Quantenberechnung \cite[S.1-2]{amicoExperimentalStudyShor2019} werden zwei Quantenregister benötigt. Ein Periodenregister $n_p$, 
+Für die Quantenberechnung \cite[S.1-2]{amico_experimental_2019} werden zwei Quantenregister benötigt. Ein Periodenregister $n_p$, 
 um den Wert der Periode zu speichern und ein Ergebnisregister $n_q$ um das Ergebnis der Berechnung zu speichern. 
 Die Größe der beiden Register hängt von der Zahl $N$ ab, welche faktorisiert werden soll. 
 Das Periodenregister benötigt eine Anzahl von Qubits $n_p$, von etwa $\log_2(N^2) \le n_p \le log_2(2N^2)$. 
@@ -140,5 +140,5 @@ Da der Restanteil hier immer der Gleiche ist, kann dieser vernachläsigt werden 
 
 $$\ket{i} + \;\ket{i+r} + \;\ket{i+2r} + \;...$$
 
-Im letzten Schritt kann die \ac{qft} angewendet werden, welche es erlaubt die Frequenz einer periodischen Superposition zu ermitteln. \cite[S. 2]{amicoExperimentalStudyShor2019}
+Im letzten Schritt kann die \ac{qft} angewendet werden, welche es erlaubt die Frequenz einer periodischen Superposition zu ermitteln. \cite[S. 2]{amico_experimental_2019}
 Wenden wir also auf die obrige periodische Superposition die \ac{qft} an, können wir aus dem Ergebnis $r$ auslesen.\\
