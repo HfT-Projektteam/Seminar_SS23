@@ -21,19 +21,19 @@ Auch wenn dieser Algorithmus einen \ac{qc} mit vielen, stabilen Qubits vorausset
 stellt diese revolutionäre Entdeckung bereits heute eine enorme Bedrohung für die moderne Kryptographie dar.
 Zum einen wird effektiv an \ac{qc} geforscht, die Anzahl stabiler Qubits in \ac{qc} steigen. 
 Wenn der \ac{qc} seinen Durchbruch in unserer Gsellschaft erreicht hat, müssen wir darauf vorbereitet sein und uns bereits heute mit den Konsequenzen auseinander setzen. 
-Zum anderen werden verschlüsselten Daten bereits heute gespeichert um sie in der Zukunft entschlüsseln zu können und 
+Zum anderen werden verschlüsselten Daten bereits heute gespeichert, um sie in der Zukunft entschlüsseln zu können und 
 im Nachinein an wichtige, vertrauliche Informationen zu gelangen. In der Kryptographie spricht man von dem Prinzip: \glqq Safe now, decrypt later\grqq.\\
 
 Im folgenden \cite{kak_lecture_nodate}\cite[S. 4-5]{gidney_how_2021} werden wir an einem vereinfachten Beispiel näher aufzeigen, 
 wie Shors Algorithmus eine effiziente Lösung für die Faktorisierung großer Zahlen auf einem \ac{qc} bietet.
 Zunächst betrachten wir die öffentliche Zahl $N$, welche in ihre Primfaktoren $p$ und $q$ zerlegt werden soll. 
 Für das vereinfachte Beispiel wählen wir $N = 77$. Also: $$N = p*q \textrm{ mit } N= 77$$
-\textit{Beachte das $N$ in Realität eine riesige Zahl ist. Das vereinfachte Beispiel soll ledeglich den Prozess von Shors Algorithmus aufzeigen}
+\textit{Beachte das $N$ in Realität eine riesige Zahl ist. Das vereinfachte Beispiel soll ledeglich den Prozess von Shors Algorithmus aufzeigen}.
 
 Nun stellen wir eine zweite Gleichung 
 $${g^r = mN+1}$$ 
 auf, welche behauptet, dass man immer einen Exponenten $r$ finden kann, sodass ein Vielfaches einer zufälligen Zahl $g < N$ gleich einem vielfachen $m$ der Zahl $N+1$ ist.
-Wir wählen zufällig die Zahl $g = 8$ und erhalten aus \ref{fig:Zufallszahl $g^x$ mit Rest} $r = 10$
+Wir wählen zufällig die Zahl $g = 8$ und erhalten aus Abbildung \ref{fig:Zufallszahl $g^x$ mit Rest} $r = 10$
 
 \begin{figure}[h]
     \begin{center}
@@ -98,7 +98,7 @@ Nachfolgend fassen wir nochmal die Schritte zusammen, wie man eine eine öffentl
 \end{enumerate}
 
 Um diesen Algorithmus auszuführen bräuchte es noch keinen \ac{qc}, jedoch wäre diese Methode auf einem klassischen Computer nicht schneller, als herkömmliche Methoden. 
-Der Kernprozess, welcher ein \ac{qc} beschleunigt ist Schritt 2. Um dies zu verstehen, betrachten wir \ref{fig:Zufallszahl $g^x$ mit Rest} nochmal genauer. 
+Der Kernprozess, welcher ein \ac{qc} beschleunigt ist Schritt 2. Um dies zu verstehen, betrachten wir Abbildung \ref{fig:Zufallszahl $g^x$ mit Rest} nochmal genauer. 
 Würde man die Tabelle fortführen, würde sich der Restanteil der Zahlen stets wiederholen. In unserem obrigen Beispiel mit der Periode $10$, 
 wie sich aus $g^0 Rest 1$ und $g^{10} Rest 1$ erkennen lässt. Dies gilt ebenfalls für die anderen Zahlen, beispielsweise würde $8^{13} Rest 50$ haben.
 Dies bedeutet, dass sich Schritt 2 beschleunigen lässt indem man die Periode findet, mit der sich der Restanteil wiederholt. 
@@ -109,7 +109,7 @@ Für die Quantenberechnung \cite[S.1-2]{amico_experimental_2019} werden zwei Qua
 um den Wert der Periode zu speichern und ein Ergebnisregister $n_q$ um das Ergebnis der Berechnung zu speichern. 
 Die Größe der beiden Register hängt von der Zahl $N$ ab, welche faktorisiert werden soll. 
 Das Periodenregister benötigt eine Anzahl von Qubits $n_p$, von etwa $\log_2(N^2) \le n_p \le log_2(2N^2)$. 
-Das Ergebnisregister muss ledeglich groß genug sein um die Zahl $N-1$ zu speichern, was $n_q = \log_2(N)$ Qubits benötigt.
+Das Ergebnisregister muss ledeglich groß genug sein, um die Zahl $N-1$ zu speichern, was $n_q = \log_2(N)$ Qubits benötigt.
 Zu Beginn wird das Periodenregister fortlaufend von $1$ initialisiert: 
 $$\ket{n_p} = \ket{0} + \ket{1} + \ket{2} + ... + \ket{10^{1234}}$$
 Diese Zahlen stellen den Exponenten $r$ dar. Das Ergebnisregister wird vorerst mit $0$ initialisiert: 
@@ -125,9 +125,8 @@ und das Ergebnisregister $n_q$ in welchem nun der Restanteil $R$ von $\frac{g^r}
 
 $$\ket{0}\ket{R_0} + \;\ket{1}\ket{R_1} + \;\ket{2}\ket{R_2} + \;...$$
 
-Die Herausforderung besteht nun darin aus der Superposition von allen möglichen Lösungen, die eine richtige zu extrahieren. 
-Der Trick ligt darin sich nur den Rest anzuschauen. Betrachten wir nochmal unser obriges Beispiel. Sobald man eine mögliche Lösung misst, 
-z.B. aus \ref{fig:Zufallszahl $g^x$ mit Rest} $R = 15$. wird dieser Rest periodisch erneut auftauchen, nämlich
+Die Herausforderung besteht nun darin, aus der Superposition von allen möglichen Lösungen, die eine Richtige zu extrahieren. 
+Der Trick ligt darin sich nur den Rest anzuschauen. Betrachten wir nochmal unser obriges Beispiel Abbildung \ref{fig:Zufallszahl $g^x$ mit Rest}. Sobald man eine mögliche Lösung misst, beispielsweise den Rest $R = 15$, wird dieser Rest periodisch erneut auftauchen, nämlich
 
 $$\ket{4}\ket{R_{15}} + \;\ket{14}\ket{R_{15}} + \;\ket{24}\ket{R_{15}} + \;...$$
 
@@ -142,3 +141,7 @@ $$\ket{i} + \;\ket{i+r} + \;\ket{i+2r} + \;...$$
 
 Im letzten Schritt kann die \ac{qft} angewendet werden, welche es erlaubt die Frequenz einer periodischen Superposition zu ermitteln. \cite[S. 2]{amico_experimental_2019}
 Wenden wir also auf die obrige periodische Superposition die \ac{qft} an, können wir aus dem Ergebnis $r$ auslesen.\\
+
+
+% Note: Periode aus Tabelle, warum r=10,
+% Was ist FT und QFT? 

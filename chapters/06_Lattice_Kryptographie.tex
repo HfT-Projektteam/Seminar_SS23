@@ -12,7 +12,18 @@ Dieses Problem gilt als NP-vollständig. \cite[Abs. 2.1]{wang_lattice-based_2023
 
 Ein weiteres Problem ist das Learning With Errors (LWE), bei dem man die Lösung eines linearen Gleichungssystems mit fehlerbehafteten Variablen in einem Gitter finden muss.
 Die fehlerbehafteten Werte werden durch eine Fehlerfunktion zufällig erzeugt. 
-Diese fügt den Gleichungen Rauschen hinzu und erschwert es, den geheimen Wert aus den Gleichungen zu erlernen.\\
+Diese fügt den Gleichungen Rauschen hinzu und erschwert es, den geheimen Wert aus den Gleichungen zu erlernen. 
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=\columnwidth]{./images/lattice.PNG}
+    \end{center}
+    \caption{
+        Darstellung eines 2D Gitters \\ 
+        \cite[Fig. 2]{xu_lighting_2018}
+    }
+    \label{fig:Darstellung eines 2D Gitters}
+\end{figure}
 
 Nachfolgend wird das LWE-Problem genauer erläutert.
 Gegeben sei ein Vektor s, der den geheimen Schlüssel darstellt, und ein Vektor e, der den Fehler darstellt. 
@@ -31,6 +42,7 @@ Dies erfordert die Bestimmung der Werte des geheimen Vektors $s_i$ trotz des Vor
 
 Die Schwierigkeit des LWE-Problems beruht darin, die Werte des geheimen Vektors $s_i$ aus den gegebenen Gleichungen zu rekonstruieren. 
 Der Angreifer muss die richtigen Werte des geheimen Vektors von den fehlerbehafteten Gleichungen unterscheiden können.
+
 
 % notes
 %Zwei gute Vektoren, welche das Gitter bilden. Einen Punkt c durch Linearkombination finden.
