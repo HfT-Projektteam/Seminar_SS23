@@ -11,6 +11,10 @@
 %% GRAPHICS
 \usepackage{graphicx}
 
+% Math Shit
+\usepackage{amsmath}
+\usepackage{physics} % http://mirrors.ibiblio.org/CTAN/macros/latex/contrib/physics/physics.pdf
+
 % CITATION
 \usepackage{acronym}
 
@@ -49,8 +53,8 @@
 \listoffigures
 \addcontentsline{toc}{section}{Abbildungsverzeichniss}
 
-%%\section*{Abkürzungsverzeichnis}
-%%\input{./chapters/Abkuerzungen.tex}
+\section*{Abkürzungsverzeichnis}
+\input{./chapters/Abkuerzungen.tex}
 
 \section{Einleitung}
 \input{./chapters/02_Einleitung.tex}
@@ -64,11 +68,14 @@
 \section{Shors-Algorithmus}
 \input{./chapters/05_Shors_Algorithmus.tex}
 
+\section{Lattice-Kryptographie}
+\input{./chapters/06_Lattice_Kryptographie.tex}
+
 \section{Leitfrage: Warum wir schon jetzt neue Verschlüsselungsalgorithmen brauchen}
 \input{chapters/06_Fazit.tex}
 
-%% \section{ChatGPT}
-%% \input{./notes/chatGPT.tex}
+%\section{ChatGPT}
+%\input{./notes/chatGPT.tex}
 
 \section*{Literaturverzeichnis}
 \printbibliography[heading=none]{}

@@ -1,0 +1,55 @@
+Im Jahr 2016 hat das US-amerikanische \ac{nist} einen weltweit einheitlichen Standardisierungsprozess für Post-Quantum-Kryptografie gestartet \cite{moodyStatusReportThird2022}.
+2022 wurden mehrere Algorithmen Ausgewählt. Die meisten dieser Algorithmen basieren auf mathematischen Gitter- (\textit{engl. Lattice}) Problemen.
+
+Lattice-Kryptographie \cite{micciancioLatticebasedCryptography} ist ein Bereich der post-quanten Kryptographie. 
+Mit dieser werden Verschlüsselungsalgorithmen auf der Grundlage mathematischer Gitterstrukturen entwickelt. 
+Ein Gitter ist eine diskrete, periodische Anordnung von Punkten im Raum. In der Kryptographie werden meistens Gitter in mehrdimensionalen Vektorräumen verwendet.
+Die Gitterpunkte werden durch Vektoren repräsentiert, die eine lineare Kombination von Basisvektoren des Gitters sind. 
+Ein Beispiel für ein zweidimensionales Gitter ist die Ebene, in der die Basisvektoren (1, 0) und (0, 1) sind, 
+und die Gitterpunkte alle ganzzahligen Kombinationen dieser Basisvektoren.
+Ein grundlegendes Problem in der Lattice-Kryptographie ist das Shortest Vector Problem (SVP), bei dem man den kürzesten Vektor in einem Gitter finden muss. 
+Dieses Problem gilt als NP-vollständig. \cite[Abs. 2.1]{wangLatticebasedCryptosystemsStandardisation2023}\\
+
+Ein weiteres Problem ist das Learning With Errors (LWE), bei dem man die Lösung eines linearen Gleichungssystems mit fehlerbehafteten Variablen in einem Gitter finden muss.
+Die fehlerbehafteten Werte werden durch eine Fehlerfunktion zufällig erzeugt. 
+Diese fügt den Gleichungen Rauschen hinzu und erschwert es, den geheimen Wert aus den Gleichungen zu erlernen.\\
+
+Nachfolgend wird das LWE-Problem genauer erläutert.
+Gegeben sei ein Vektor s, der den geheimen Schlüssel darstellt, und ein Vektor e, der den Fehler darstellt. 
+Das LWE-Problem besteht darin, den geheimen Vektor s aus einer Reihe von Gleichungen der Form 
+$$c = (a * s + e)\mod{q}$$ zu erlernen, wobei $c$ der Ciphertext und $a$ ein öffentlicher Vektor ist. 
+Das Modulo $q$ repräsentiert eine endliche Gruppe, in der die Rechenoperationen durchgeführt werden.
+
+Um das LWE-Problem zu lösen, werden eine Reihe von Gleichungen erzeugt. Der geheime Vektor s und der Fehlervektor e werden zufällig generiert. 
+Der öffentliche Vektor a wird ebenfalls zufällig gewählt. Für jeden Gitterpunkt $i$ wird die Gleichung 
+$$c_i = (a * s_i + e_i) \mod{q}$$ 
+erstellt.
+
+Der Angreifer erhält eine Menge von Gleichungen, bestehend aus den Ciphertexts $c_i$ und den öffentlichen Vektoren $a_i$. 
+Das Ziel des Angreifers ist es, den geheimen Vektor $s_i$ zu erlernen, basierend auf den Ciphertexts und den öffentlichen Vektoren. 
+Dies erfordert die Bestimmung der Werte des geheimen Vektors $s_i$ trotz des Vorhandenseins von Fehlern $e_i$.
+
+Die Schwierigkeit des LWE-Problems beruht darin, die Werte des geheimen Vektors $s_i$ aus den gegebenen Gleichungen zu rekonstruieren. 
+Der Angreifer muss die richtigen Werte des geheimen Vektors von den fehlerbehafteten Gleichungen unterscheiden können.
+
+\begin{figure}[h]
+    \begin{center}
+        \includegraphics[width=\columnwidth]{./images/lattice.PNG}
+    \end{center}
+    \caption{
+        Darstellung eines 2D Gitters \\ 
+        \cite[Fig. 2]{xuLightingWaySmart2018}
+    }
+    \label{fig:Darstellung eines 2D Gitters}
+\end{figure}
+
+Hallo
+
+% notes
+%Zwei gute Vektoren, welche das Gitter bilden. Einen Punkt c durch Linearkombination finden.
+%Zwei schlechte Vektoren können das selbe Gittern bilden.
+%Man bekommt nur die Vektoren gegeben, nicht das Gitter.
+%Wenn man eine Nachricht vershcicken möchte, wählt man einen Gitterpunkt (dieser beinhaltet einen Schlüssel). Man fügt ein Rauschen hinzu,
+%sodass der Nachrichtenpunkt nur nahe dran liegt. Person A und B teilen das Gitter mit schlechten Vektoren öffentlich. 
+%Closest Vector Problem im 1000-Dim Raum -> Welcher Gitter Punkt, ist am nähsten zum Nachrichtenpunkt.
+%Ohne gute Vektoren im 1000dim Raum sehr schwer, selbst für QC.
