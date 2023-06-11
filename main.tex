@@ -18,6 +18,10 @@
 % CITATION
 \usepackage{acronym}
 
+% MATH
+
+\usepackage{physics}
+
 \usepackage[style=ieee, maxcitenames=2, mincitenames=1]{biblatex}
 \addbibresource{sources.bib}
 
@@ -28,7 +32,7 @@
 \pagenumbering{Roman} 
 
 \title{Post Quanten Kryptographie\\
-\large \ \\ \large Warum wir neue Verschlüsselungsalgorithmen brauchen}
+\large \ \\ \large Warum wir schon jetzt neue Verschlüsselungsalgorithmen brauchen}
 
 \author{
   \IEEEauthorblockN{Thomas Jakkel}
@@ -55,16 +59,36 @@
 \section{Einleitung}
 \input{./chapters/02_Einleitung.tex}
 
+\section{Einführung in das Quanten Computing}
+\input{chapters/03_QC-introuduction.tex}
+
+\section{RSA}
+\input{chapters/04_RSA.tex}
+
 \section{Shors-Algorithmus}
 \input{./chapters/05_Shors_Algorithmus.tex}
 
 \section{Lattice-Kryptographie}
 \input{./chapters/06_Lattice_Kryptographie.tex}
 
+\section{Leitfrage: Warum wir schon jetzt neue Verschlüsselungsalgorithmen brauchen}
+\input{chapters/06_Fazit.tex}
+
 %\section{ChatGPT}
 %\input{./notes/chatGPT.tex}
 
 \section*{Literaturverzeichnis}
 \printbibliography[heading=none]{}
+
+\pagebreak
+\section{Anhang}
+
+\subsection{IBM Quantencomputing roadmap}
+\begin{figure}[!hbt]
+  \centering
+  \includegraphics[width=\textwidth]{./images/ibm-roadmap.png}
+  \caption{Rodmap der Firma IBM für ihren Quantencomputer \cite{noauthor_ibm_2015}}
+  \label{fig:ibm-rm}
+\end{figure}
 
 \end{document}
